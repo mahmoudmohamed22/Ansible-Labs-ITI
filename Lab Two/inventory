@@ -1,0 +1,6 @@
+[webservers]
+34.239.136.74
+
+[webservers:vars]
+package_name=nginx
+package_state=latest

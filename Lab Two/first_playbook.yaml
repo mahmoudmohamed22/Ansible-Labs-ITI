@@ -1,0 +1,23 @@
+- name: Update web servers
+  hosts: webservers
+  gather_facts: yes
+  # vars:
+  #   - package_name: nginx
+  #   - package_state: latest
+  tasks:
+  - name: apt-get update
+    tags: update
+    yum:
+      update_cache: yes
+
+  - name: Install the latest version of Apache
+    yum:
+      name: httpd
+      state: latest
+    register: my_result
+    
+  -  name: my task2 with register
+     service:
+       name: httpd
+       state: restarted
+     when: "my_result.changed==true"
