@@ -1,0 +1,15 @@
+---
+# handlers file for web
+
+- name: Copy files 
+  copy:
+    src: "{{item}}"
+    dest: /home/ec2-user
+  loop:
+   - files
+  notify: Restart service httpd 
+
+- name: Restart service httpd
+  service:
+    name: httpd
+    state: restarted

@@ -1,0 +1,10 @@
+---
+# vars file for web
+name_package: httpd
+files:
+ - index.html
+ - test
+ - day3
+
+template_name: index.html.j2
+template_messesge: If you want to live a happy life, tie it to a goal, not to people or things.

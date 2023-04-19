@@ -1,0 +1,14 @@
+---
+# tasks file for web
+- name: Install the latest version of Apache
+  yum:
+    name: "{{name_package}}"
+    state: latest
+  notify: Copy files 
+
+
+- name: Copy files templates
+  template:
+    src: "{{template_name}}"
+    dest: /home/ec2-user
+  notify: Restart service httpd 
