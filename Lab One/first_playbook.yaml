@@ -1,0 +1,23 @@
+- name: Update web servers
+  hosts: webservers
+  gather_facts: yes
+  tasks:
+  - name: Update cached
+    apt:
+      update_cache: yes
+
+  - name: install nginx
+    apt:
+      name: nginx
+      state: latest
+      update_cache: yes
+
+  # - name: Copy index to ngnix 
+  #   copy:
+  #     src: ./index.html
+  #     dest:  /usr/share/nginx/html
+
+  - name: start nginx
+    systemd:
+      name: nginx
+      state: started
